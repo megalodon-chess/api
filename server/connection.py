@@ -41,6 +41,7 @@ def start(self: pysocket.server.Client):
 
 def main():
     server = pysocket.Server(IP, 5050, start, b"9s5i6cZEmRp_P91LwrLebemgzPNhQsiQLHZAr1849Ec=")
+    server.start()
 
 
 main()
