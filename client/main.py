@@ -18,18 +18,22 @@
 #
 
 import sys
+import os
 import json
 import pysocket
 from tkinter import Tk
 from tkinter.filedialog import asksaveasfilename
 Tk().withdraw()
 
-IP = input("IP: ")
+PARENT = os.path.dirname(os.path.realpath(__file__))
+with open(os.path.join(PARENT, "ip.txt")) as file:
+    IP = file.read().strip()
 
 
 def main():
     if not len(sys.argv) > 1:
         print("Please provide an argument.")
+        return
 
     conn = pysocket.Client(IP, 5050, b"9s5i6cZEmRp_P91LwrLebemgzPNhQsiQLHZAr1849Ec=")
     if sys.argv[1] == "getbuild":
