@@ -23,7 +23,8 @@ import pysocket
 
 PARENT = os.path.dirname(os.path.realpath(__file__))
 DATA_PATH = os.path.join(PARENT, "data")
-IP = input("IP: ")
+with open(os.path.join(PARENT, "ip.txt")) as file:
+    IP = file.read().strip()
 
 
 def start(self: pysocket.server.Client):
