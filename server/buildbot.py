@@ -32,8 +32,6 @@ URL = "https://github.com/megalodon-chess/megalodon.git"
 def main():
     os.makedirs(DATA_PATH, exist_ok=True)
     while True:
-        time.sleep(BUILD_INC*60)
-
         if not os.path.isdir(REPO_PATH):
             os.system(f"git clone {URL} {REPO_PATH}")
         os.chdir(REPO_PATH)
@@ -46,6 +44,8 @@ def main():
         os.rename(os.path.join(REPO_PATH, "build", "Megalodon"), os.path.join(DATA_PATH, "buildbot-Megalodon"))
         with open(os.path.join(DATA_PATH, "buildbot-info.json"), "w") as file:
             json.dump({"date": datetime.now().strftime("%m-%d-%Y %H-%M-%S")}, file, indent=4)
+
+        time.sleep(BUILD_INC*60)
 
 
 main()
