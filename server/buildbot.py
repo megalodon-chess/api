@@ -36,13 +36,16 @@ def main():
 
         if not os.path.isdir(REPO_PATH):
             os.system(f"git clone {URL} {REPO_PATH}")
+        os.chdir(REPO_PATH)
+        os.system("git pull")
+
         os.makedirs(os.path.join(REPO_PATH, "build"), exist_ok=True)
         os.chdir(os.path.join(REPO_PATH, "build"))
         os.system("cmake ..")
         os.system("make")
         os.rename(os.path.join(REPO_PATH, "build", "Megalodon"), os.path.join(DATA_PATH, "buildbot-Megalodon"))
         with open(os.path.join(DATA_PATH, "buildbot-info.json"), "w") as file:
-            json.dump({"date": datetime.now().strftime("%m-%d-%Y %H-%M-%S")}, indent=4)
+            json.dump({"date": datetime.now().strftime("%m-%d-%Y %H-%M-%S")}, file, indent=4)
 
 
 main()
