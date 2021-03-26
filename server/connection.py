@@ -38,6 +38,14 @@ def start(self: pysocket.server.Client):
         else:
             self.send({"success": False})
 
+    elif cmd["type"] == "getbuild":
+        if os.path.isfile(os.path.join(DATA_PATH, "buildbot-Megalodon")):
+            with open(os.path.join(DATA_PATH, "buildbot-Megalodon"), "rb") as file:
+                data = file.read()
+            self.send({"success": True, "data": data})
+        else:
+            self.send({"success": False})
+
 
 def main():
     server = pysocket.Server(IP, 5050, start, b"9s5i6cZEmRp_P91LwrLebemgzPNhQsiQLHZAr1849Ec=")
