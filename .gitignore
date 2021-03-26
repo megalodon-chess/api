@@ -3,3 +3,4 @@ __pycache
 
 /server/data/
 /server/data/megalodon/
+/server/*.out
