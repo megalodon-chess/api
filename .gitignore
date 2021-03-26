@@ -5,3 +5,5 @@ __pycache
 /server/data/megalodon/
 /server/*.out
 /server/ip.txt
+
+/client/ip.txt
