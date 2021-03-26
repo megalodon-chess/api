@@ -40,8 +40,10 @@ def main():
         conn.send({"type": "getbuild"})
         data = conn.recv()
         if data["success"]:
-            with open(asksaveasfilename(), "wb") as file:
+            path = asksaveasfilename()
+            with open(path, "wb") as file:
                 file.write(data["data"])
+            os.system(f"chmod +x {path}")
         else:
             print("Server error. Please try again later.")
 
