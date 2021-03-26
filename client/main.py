@@ -31,7 +31,7 @@ def main():
     if not len(sys.argv) > 1:
         print("Please provide an argument.")
 
-    conn = pysocket.Client(IP, 5555, b"9s5i6cZEmRp_P91LwrLebemgzPNhQsiQLHZAr1849Ec=")
+    conn = pysocket.Client(IP, 5050, b"9s5i6cZEmRp_P91LwrLebemgzPNhQsiQLHZAr1849Ec=")
     if sys.argv[1] == "getbuild":
         conn.send({"type": "getbuild"})
         data = conn.recv()
