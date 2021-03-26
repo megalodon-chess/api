@@ -18,6 +18,7 @@
 #
 
 import sys
+import json
 import pysocket
 from tkinter import Tk
 from tkinter.filedialog import asksaveasfilename
@@ -36,7 +37,15 @@ def main():
         data = conn.recv()
         if data["success"]:
             with open(asksaveasfilename(), "wb") as file:
-                file.write(data)
+                file.write(data["data"])
+        else:
+            print("Server error. Please try again later.")
+
+    elif sys.argv[1] == "getbuildinfo":
+        conn.send({"type": "getbuildinfo"})
+        data = conn.recv()
+        if data["success"]:
+            print(json.dumps(data["data"], indent=4))
         else:
             print("Server error. Please try again later.")
 
