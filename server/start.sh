@@ -1,4 +1,4 @@
 #!/bin/bash
 
-nohup python ./buildbot.py > ./buildbot.out &
-nohup python ./connection.py > ./connection.out &
+nohup python3.8 ./buildbot.py > ./buildbot.out &
+nohup python3.8 ./connection.py > ./connection.out &
