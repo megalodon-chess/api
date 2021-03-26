@@ -46,6 +46,9 @@ def start(self: pysocket.server.Client):
         else:
             self.send({"success": False})
 
+    elif cmd["type"] == "ping":
+        self.send({"success": True})
+
 
 def main():
     server = pysocket.Server(IP, 5050, start, b"9s5i6cZEmRp_P91LwrLebemgzPNhQsiQLHZAr1849Ec=")

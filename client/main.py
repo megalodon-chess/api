@@ -19,6 +19,7 @@
 
 import sys
 import os
+import time
 import json
 import pysocket
 from tkinter import Tk
@@ -54,6 +55,12 @@ def main():
             print(json.dumps(data["data"], indent=4))
         else:
             print("Server error. Please try again later.")
+
+    elif sys.argv[1] == "lag":
+        start = time.time()
+        conn.send({"type": "ping"})
+        conn.recv()
+        print(f"Lag: {int(1000*(time.time()-start))} milliseconds.")
 
 
 main()
