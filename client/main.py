@@ -59,8 +59,11 @@ def main():
     elif sys.argv[1] == "lag":
         start = time.time()
         conn.send({"type": "ping"})
-        conn.recv()
-        print(f"Lag: {int(1000*(time.time()-start))} milliseconds.")
+        data = conn.recv()
+        if data["success"]:
+            print(f"Lag: {int(1000*(time.time()-start))} milliseconds.")
+        else:
+            print("Server error. Please try again later.")
 
 
 main()
