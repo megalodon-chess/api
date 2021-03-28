@@ -17,4 +17,4 @@ python main.py lag
 
 ## Server IP
 
-The IP address of the Megalodon server is `54.177.229.239`
+There is no server right now.
